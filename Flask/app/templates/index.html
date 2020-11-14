@@ -4,25 +4,7 @@
   
   <script type="text/javascript">
     // we define answers
-    var answers = ["It is certain", 
-                   "It is decidedly so", 
-                   "Without a doubt", 
-                   "Yes - definitely",
-                   "You may rely on it", 
-                   "As I see it, yes", 
-                   "Most likely", 
-                   "Outlook good", 
-                   "Yes", "Signs point to yes",
-                   "Don't count on it", 
-                   "My reply is no",
-                   "My sources say no", 
-                   "Outlook not so good",
-                   "Very doubtful", 
-                   "Reply hazy, try again", 
-                   "Ask again later", 
-                   "Better not tell you now",
-                   "Cannot predict now", 
-                   "Concentrate and ask again"];
+    var answers = [ML_response];
     
     window.onload = function() {
        var eight = document.getElementById("eight");
@@ -119,6 +101,11 @@
 		text-align: right;
 		float: right;
           margin-top: 4px;
+          position: relative;
+          top: -17px;
+          left: 188px;
+          height: 20px;
+          width: 130px;
       }
      .btn {
 		margin: 0 auto;
@@ -126,9 +113,16 @@
 	}
     
       .no-border {
-          height: 301px;
-          width: 180px;
+          height: 239px;
+          width: 576px;
           text-align: justify;
+          position: relative;
+          top: -2px;
+          left: 10px;
+      }
+    
+      .auto-style1 {
+          font-size: large;
       }
     
   </style>
@@ -138,28 +132,34 @@
   <div id="content">
     <h1>Communcation Challenged 8ball for First Dates</h1>
     <p id="info">Describe your Date Please</p>
-    <div class="form">
-              <form action="/Date_input" method="post">
-                <div class="input-group no-border"><b>
-                <label for="sex"><strong>What is your dates sex</strong></label><strong><br>
-                  <input type="text" name="sex"></strong>
-                  <label for="hair"><strong>What is your dates Hair Color</strong></label></b><strong><br>
-                  <input type="text" name="hair"></strong>
-                  <label for="height"><strong>What is your dates height(tall, medium, short)</strong></label><strong><br>
-                  <input type="text" name="height"></strong>
-                  <label for="score"><strong>Are you hoping to score tonight</strong></label><strong><br>
-                  <input type="text" name="score"></strong>
-                  <label for="birth"><strong>What is your dates birth sign?</strong></label><strong><br>
-                  <input type="date" name="birth"><input class="btn btn-default" type="Submit" value="Submit"></strong>&nbsp; <strong>
-    <div class="form">
-              </div>
-                    </strong>
-                    </div>
-                  </form>
-                </div>
+      <h3><b>
+       <form class="form-horizontal">
+        <div class="input-group no-border">&nbsp;<b><label for="sex"><strong><span class="auto-style1">What is your dates sex</span></strong></label><strong><br class="auto-style1">
+                  <input type="text" name="sex" class="auto-style1"></strong>
+                  <label for="hair"><strong>
+          <br class="auto-style1" />
+          <span class="auto-style1">What is your dates Hair Color</span></strong></label></b><strong><br class="auto-style1">
+                  <input type="text" name="hair" class="auto-style1"></strong>
+                  <label for="height"><strong>
+          <br class="auto-style1" />
+          <span class="auto-style1">What is your dates height(tall, medium, short)</span></strong></label><strong><br class="auto-style1">
+                  <input type="text" name="height" class="auto-style1"></strong>
+                  <label for="score"><strong>
+          <br class="auto-style1" />
+          <span class="auto-style1">Are you hoping to score tonight</span></strong></label><strong><br class="auto-style1">
+                  <input type="text" name="score" class="auto-style1"></strong>
+                  <label for="birth"><strong>
+          <br class="auto-style1" />
+          <span class="auto-style1">What is your dates birth sign?</span></strong></label><strong><br class="auto-style1">
+                  <input type="text" name="birth" class="auto-style1"></strong></h3>
+      <h3>
+                  <input class="btn btn-default" type="Submit" value="Submit"></h3>
+           </div>
+                </b>
+      <form class="form-horizontal">
              <div id="eight-ball" class="eight-ball">
                   <div class="answer">
-                      <p id="eight">8</p>
+                      <p id="eight">8    <p id="eight">8    <p id="eight">8</p>
         <p id="answer"></p>
       </div>
     </div>
