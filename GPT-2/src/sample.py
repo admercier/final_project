@@ -1,8 +1,8 @@
 import tensorflow.compat.v1 as tf
 tf.disable_v2_behavior()
 
-
-from src import model
+import model
+#from src import model
 
 def top_k_logits(logits, k):
     if k == 0:
