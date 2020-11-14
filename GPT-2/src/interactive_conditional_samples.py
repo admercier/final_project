@@ -7,8 +7,8 @@ import numpy as np
 import tensorflow.compat.v1 as tf
 tf.disable_v2_behavior()
 
-
-from src import model, sample, encoder
+import model, sample, enconder
+# from src import model, sample, encoder
 
 def interact_model(
     model_name='124M',
