@@ -1,15 +1,26 @@
 import numpy as np
-import tensorflow as tf
-from tensorflow.contrib.training import HParams
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+
+#from tensorflow.contrib.training import HParams
+
+#def default_hparams():
+#    return HParams(
+#        n_vocab=0,
+#        n_ctx=1024,
+#        n_embd=768,
+#        n_head=12,
+#        n_layer=12,
+#    )
 
 def default_hparams():
-    return HParams(
-        n_vocab=0,
-        n_ctx=1024,
-        n_embd=768,
-        n_head=12,
-        n_layer=12,
-    )
+    return {
+        "n_vocab":0,
+        "n_ctx":1024,
+        "n_embd":768,
+        "n_head":12,
+        "n_layer":12,
+    }
 
 def shape_list(x):
     """Deal with dynamic shape in tensorflow cleanly."""
@@ -68,13 +79,13 @@ def attention_mask(nd, ns, *, dtype):
 
 def attn(x, scope, n_state, *, past, hparams):
     assert x.shape.ndims == 3  # Should be [batch, sequence, features]
-    assert n_state % hparams.n_head == 0
+    assert n_state % hparams["n_head"] == 0
     if past is not None:
         assert past.shape.ndims == 5  # Should be [batch, 2, heads, sequence, features], where 2 is [k, v]
 
     def split_heads(x):
         # From [batch, sequence, features] to [batch, heads, sequence, features]
-        return tf.transpose(split_states(x, hparams.n_head), [0, 2, 1, 3])
+        return tf.transpose(split_states(x, hparams["n_head"]), [0, 2, 1, 3])
 
     def merge_heads(x):
         # Reverse of split_heads
@@ -130,7 +141,7 @@ def block(x, scope, *, past, hparams):
         return x, present
 
 def past_shape(*, hparams, batch_size=None, sequence=None):
-    return [batch_size, hparams.n_layer, 2, hparams.n_head, sequence, hparams.n_embd // hparams.n_head]
+    return [batch_size, hparams["n_layer"], 2, hparams["n_head"], sequence, hparams["n_embd"] // hparams["n_head"]]
 
 def expand_tile(value, size):
     """Add a new axis of given size."""
@@ -149,17 +160,17 @@ def model(hparams, X, past=None, scope='model', reuse=False):
         results = {}
         batch, sequence = shape_list(X)
 
-        wpe = tf.get_variable('wpe', [hparams.n_ctx, hparams.n_embd],
+        wpe = tf.get_variable('wpe', [hparams["n_ctx"], hparams["n_embd"]],
                              initializer=tf.random_normal_initializer(stddev=0.01))
-        wte = tf.get_variable('wte', [hparams.n_vocab, hparams.n_embd],
+        wte = tf.get_variable('wte', [hparams["n_vocab"], hparams["n_embd"]],
                              initializer=tf.random_normal_initializer(stddev=0.02))
         past_length = 0 if past is None else tf.shape(past)[-2]
         h = tf.gather(wte, X) + tf.gather(wpe, positions_for(X, past_length))
 
         # Transformer
         presents = []
-        pasts = tf.unstack(past, axis=1) if past is not None else [None] * hparams.n_layer
-        assert len(pasts) == hparams.n_layer
+        pasts = tf.unstack(past, axis=1) if past is not None else [None] * hparams["n_layer"]
+        assert len(pasts) == hparams["n_layer"]
         for layer, past in enumerate(pasts):
             h, present = block(h, 'h%d' % layer, past=past, hparams=hparams)
             presents.append(present)
@@ -167,8 +178,8 @@ def model(hparams, X, past=None, scope='model', reuse=False):
         h = norm(h, 'ln_f')
 
         # Language model loss.  Do tokens <n predict token n?
-        h_flat = tf.reshape(h, [batch*sequence, hparams.n_embd])
+        h_flat = tf.reshape(h, [batch*sequence, hparams["n_embd"]])
         logits = tf.matmul(h_flat, wte, transpose_b=True)
-        logits = tf.reshape(logits, [batch, sequence, hparams.n_vocab])
+        logits = tf.reshape(logits, [batch, sequence, hparams["n_vocab"]])
         results['logits'] = logits
         return results
