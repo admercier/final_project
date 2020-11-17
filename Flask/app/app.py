@@ -21,12 +21,17 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-import ETL
-@app.route('/Date_input', methods=['POST']) 
-def Date_input(): 
-    ETL.Date_input(request)
-    return render_template('index.html')
+#import gpt
+#@app.route('/Date_input', methods=['POST']) 
+#def Date(): 
+   # ETL.Date_input(request)
+    #return render_template('index.html')
 
-@app.route('/ML_response/')
-def ML_response():
-    return render_template('index.html')
+#@app.route('/ML_response/')
+#def ML_response():
+    #return render_template('index.html')
+
+ 
+if __name__ == "__main__":
+    app.config['TEMPLATES_AUTO_RELOAD'] = True
+    app.run(debug = True)
