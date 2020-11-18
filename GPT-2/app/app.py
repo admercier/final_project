@@ -1,10 +1,8 @@
 from flask import Flask, render_template, request, flash, redirect, url_for
 import flask
 import pandas as pd
-import seaborn
-from flask import request
-from flask import Flask 
-from flask import request 
+from app import GPT2
+
 
 
 # Create an instance of Flask app
@@ -14,7 +12,7 @@ app = Flask(__name__)
 def index():
     return render_template('index3.html')
 
-import GPT
+import GPT2
 @app.route('/Date_Input', methods=['POST']) 
 def Date_Input():
     sex = request.form['sex']
@@ -22,15 +20,17 @@ def Date_Input():
     height = request.form['height']
     score = request.form['score']
     birth = request.form['birth']
-    GPT.Date_Input(sex,hair,height,score,birth)
-    return (url_for('/ml_input', input_statement = 'input_statement'))                                                 
+    input_statement = GPT2.Date_Input(sex,hair,height,score,birth)
+    return (url_for('/ml_input', input_statement = 'input_statement')) 
+    
 
-import gpt2
+
+import gpt
 @app.route('/ml_input', methods=['POST']) 
 def ml_input():
-   in_state = request.form['input_statement']
-   gpt2.ml_input(in_state)
-   return render_template('index3.html') 
+    in_state = request.form['input_statement']
+    gpt.ml_input(in_state)
+    return render_template('index3.html') 
 
 #@app.route('/ML_response/')
 #def ML_response():
