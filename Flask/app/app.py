@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index3.html')
 
 import GPT
 @app.route('/Date_Input', methods=['POST']) 
@@ -23,14 +23,14 @@ def Date_Input():
     score = request.form['score']
     birth = request.form['birth']
     GPT.Date_Input(sex,hair,height,score,birth)
-    return ('/ml_input', "input_statement")                                                 
+    return (url_for('/ml_input', input_statement = 'input_statement'))                                                 
 
 #import gpt2
 #@app.route('/ml_input', methods=['POST']) 
 #def ml_input():
  #   in_state = request.form['input_statement']
   #  gpt2.ml_input(in_state)
-  #  return render_template('index2.html') 
+  #  return render_template('index3.html') 
 
 #@app.route('/ML_response/')
 #def ML_response():
