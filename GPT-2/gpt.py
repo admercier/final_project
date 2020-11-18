@@ -10,7 +10,7 @@ from src import model, sample, encoder
 #sys.path.append('src/')
 from src import interactive_conditional_samples as ics
 
-ics.interact_model( model_name='1542M',nsamples=2,top_k=40,temperature=.80)
+ics.interact_model( model_name='1558M',nsamples=2,top_k=40,temperature=.80)
 # 
 # 
 # --model_name='345M' --nsamples=2 --top_k=40 --temperature=.80
