@@ -1,18 +1,11 @@
-from flask import Flask, request, render_template, redirect, jsonify, url_for 
-from flask_pymongo import PyMongo
-from flask_assets import Environment, Bundle
-from flask_scss import Scss
-import pymongo
-from datetime import datetime
-from pymongo import MongoClient
-from flask import jsonify, json, request
-from bson.json_util import dumps
-from bson.objectid import ObjectId
-from dateutil.parser import parse
-import sys
-import numpy as np
-import os
-import csv
+from flask import Flask, render_template, request, flash, redirect, url_for
+import flask
+import pandas as pd
+import seaborn
+from flask import request
+from flask import Flask 
+from flask import request 
+
 
 # Create an instance of Flask app
 app = Flask(__name__)
@@ -21,11 +14,23 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-#import gpt
-#@app.route('/Date_input', methods=['POST']) 
-#def Date(): 
-   # ETL.Date_input(request)
-    #return render_template('index.html')
+import GPT
+@app.route('/Date_Input', methods=['POST']) 
+def Date_Input():
+    sex = request.form['sex']
+    hair = request.form['hair']
+    height = request.form['height']
+    score = request.form['score']
+    birth = request.form['birth']
+    GPT.Date_Input(sex,hair,height,score,birth)
+    return render_template('index2.html')                                                 
+
+import gpt2
+@app.route('/ml_input', methods=['POST']) 
+def ml_input():
+    in_state = request.form['input_statement']
+    gpt2.ml_input(in_state)
+    return render_template('index2.html') 
 
 #@app.route('/ML_response/')
 #def ML_response():
