@@ -22,16 +22,14 @@ def Date_Input():
     score = request.form['score']
     birth = request.form['birth']
     input_statement = GPT2.Date_Input(sex,hair,height,score,birth)
-    return (url_for('/ml_input', input_statement = 'input_statement')) 
-    
+    return render_template('index3.html', response = response) 
 
-
-import gpt
-@app.route('/ml_input', methods=['POST']) 
-def ml_input():
-    in_state = request.form['input_statement']
-    gpt.ml_input(in_state)
-    return render_template('index3.html') 
+# import gpt
+# @app.route('/ml_input', methods=['POST']) 
+# def ml_input():
+#     in_state = request.form['input_statement']
+#     gpt.ml_input(in_state)
+#     return render_template('index3.html') 
 
 #@app.route('/ML_response/')
 #def ML_response():
