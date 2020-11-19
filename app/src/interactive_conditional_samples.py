@@ -7,7 +7,7 @@ import numpy as np
 import tensorflow.compat.v1 as tf
 tf.disable_v2_behavior()
 
-import model, sample, encoder
+from . import model, sample, encoder
 #from src import model, sample, encoder
 
 def interact_model(

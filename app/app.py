@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, flash, redirect, url_for
+from flask import Flask, render_template, Response, request, flash, redirect, url_for
 import flask
 import pandas as pd
 import os
@@ -22,7 +22,7 @@ def Date_Input():
     score = request.form['score']
     birth = request.form['birth']
     input_statement = GPT2.Date_Input(sex,hair,height,score,birth)
-    return render_template('index3.html', response = response) 
+    return render_template('index3.html', response = Response) 
 
 # import gpt
 # @app.route('/ml_input', methods=['POST']) 
