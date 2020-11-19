@@ -14,7 +14,7 @@ def index():
     return render_template('index3.html')
 
 import GPT2
-@app.route('/Date_Input', methods=['POST']) 
+@app.route('/Date_Input', methods=["GET","POST"]) 
 def Date_Input():
     sex = request.form['sex']
     hair = request.form['hair']
@@ -22,15 +22,17 @@ def Date_Input():
     score = request.form['score']
     birth = request.form['birth']
     GPT2.Date_Input(sex,hair,height,score,birth)
-    return render_template('index3.html', my_resp = 'my_resp') 
+    response = request.form.get('response')
+    print("-----------------------------------------------")
+    print(response)
+    return render_template('index3.html', response = response) 
    
 
-# import gpt
-# @app.route('/ml_input', methods=['POST']) 
+# @app.route('/my_resp', methods=['POST']) 
 # def ml_input():
-#     in_state = request.form['input_statement']
-#     gpt.ml_input(in_state)
-#     return render_template('index3.html') 
+#      in_state = request.form['input_statement']
+#      gpt.ml_input(in_state)
+#      return render_template('index3.html') 
 
 #@app.route('/ML_response/')
 #def ML_response():
