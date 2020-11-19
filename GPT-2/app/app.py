@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, flash, redirect, url_for
 import flask
 import pandas as pd
-from app import GPT2
+import os
+import sys
 
 
 
