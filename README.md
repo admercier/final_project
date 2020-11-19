@@ -1,3 +1,3 @@
 # final_project
 
-![Image of Yaktocat](https://admercier.github.com/final_project/fullscreen.png)
+(https://github.com/admercier/final_project/blob/main/fullscreen.png?raw=true)
