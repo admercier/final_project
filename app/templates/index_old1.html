@@ -1,0 +1,160 @@
+<html>
+ <head>
+  <title>Magic 8 Ball</title>
+  
+  <script type="text/javascript">
+    // we define answers
+    var answers = [ML_response];
+    
+    window.onload = function() {
+       var eight = document.getElementById("eight");
+       var answer = document.getElementById("answer");
+       var eightball = document.getElementById("eight-ball");
+       var question = document.getElementById("question");
+       
+       eightball.addEventListener("click", function() {
+         if (question.value.length < 1) {
+           alert('Enter a question!');
+         } else {
+           eight.innerText = "";
+           var num = Math.floor(Math.random() * Math.floor(answers.length));
+           answer.innerText = answers[num];
+         }
+       });
+    };
+  </script>
+  
+  <style type="text/css">
+    h1 { font-weight: 100; font-size: 2.5em;}
+    
+    #content { 
+     width: 600px; 
+     margin: 0 auto; 
+     margin-top: 100px; 
+     border: 1px dotted black;
+     text-align: center; 
+     font-family: 'Helvetica Neue', arial; 
+     font-weight: 100;
+   }
+    
+    div.eight-ball {
+      background-color: black;
+      border: 1px solid black;
+      border-radius: 50%;
+      width: 600px;
+      height: 600px;
+      margin: 0 auto;
+      margin-bottom: 0px;
+      margin-top: 30px;
+    }
+    
+    div.answer {
+      background-color: #333;
+      border: 1px solid #333;
+      border-radius: 50%;
+      width: 50%;
+      height: 50%;
+      margin: 25% auto;
+    }
+    
+    p#eight {
+      font-size: 5em;
+      margin: 100% auto;
+      color: white;
+          width: 537px;
+          text-align: center;
+      }
+    
+    p#answer {
+      padding: 23px;
+      color: lightblue;
+      letter-spacing: 2px;
+      font-size:18px;
+          height: 175px;
+          width: 534px;
+          margin-top: 0px;
+      }
+    
+    #question {
+      margin: 20px;
+      padding: 10px;
+      width: 400px;
+      font-size:22px;
+    }
+    
+    #info {
+      font-size: 22px;
+    }
+
+    .form {
+		margin: 0 auto;
+		width: 418px;
+	}
+
+	.form label{
+		display: inline-block;
+		text-align: right;
+	}
+
+	.form input{
+		display: inline-block;
+		text-align: right;
+		float: right;
+          margin-top: 4px;
+          position: relative;
+          top: -17px;
+          left: 188px;
+          height: 20px;
+          width: 130px;
+      }
+     	}
+    
+      .no-border {
+          height: 239px;
+          width: 576px;
+          text-align: justify;
+          position: relative;
+          top: -2px;
+          left: 10px;
+      }
+    
+      .auto-style1 {
+          font-size: large;
+      }
+    
+  </style>
+  
+ </head>
+ <body>
+  <div id="content">
+    <h1>Communcation Challenged 8ball for First Dates</h1>
+    <p id="info">Describe your Date Please</p>
+      <div class="form">
+              <form action='/Date_Input' method="POST">
+                <div class="input-group no-border">
+                <label for="sex">What is your date's Sex</label><br>
+                  <input type="text" id="sex" name="sex">
+                  <label for="hair">What is your date's Hair Color</label><br>
+                  <input type="text" id="hair" name="hair" >
+                  <label for="height">What is your Date's height</label><br>
+                  <input type="text" id="height" name="height">
+                  <label for="score">Are you trying to Score with your date</label><br>
+                  <input type="text" id="score" name="score">
+                  <label for="birth">What is your Date's Zodiac sign</label><br>
+                  <input type="text" id="birth" name="birth">
+                  <input class="btn btn-default" type="Submit" value="Submit">
+                  </div>
+                </form>
+              </div>
+            
+          
+      <form class="form-horizontal">
+             <div id="eight-ball" class="eight-ball">
+                  <div class="answer">
+                      <p id="eight">8    <p id="eight">8    <p id="eight">8</p>
+        <p id="answer"></p>
+      </div>
+    </div>
+  </div>
+ </body>
+</html>

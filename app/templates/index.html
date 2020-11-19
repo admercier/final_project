@@ -1,14 +1,15 @@
 <html>
- <head>
-  <title>Magic 8 Ball</title>
-  
-  <script type="text/javascript">
+<head>
+
+    <title>Magic 8 Ball</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script type="text/javascript">
     // we define answers
-    var answers = [ML_response];
+    //var answers = {{response}};
     
     window.onload = function() {
        var eight = document.getElementById("eight");
-       var answer = document.getElementById("answer");
+       var answer = document.getElementById({{response}});
        var eightball = document.getElementById("eight-ball");
        var question = document.getElementById("question");
        
@@ -17,144 +18,255 @@
            alert('Enter a question!');
          } else {
            eight.innerText = "";
-           var num = Math.floor(Math.random() * Math.floor(answers.length));
-           answer.innerText = answers[num];
+           var num = Math.floor(Math.random() * Math.floor(answer.length));
+           answer.innerText = answer[num];
          }
        });
     };
-  </script>
+    </script>
+    <style>
+        body {
+            height: 100%;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            background-repeat:no-repeat;
+            background: rgb(135,4,32);
+            background: radial-gradient(circle, rgba(135,4,32,1) 0%, rgba(38,58,156,1) 100%);      
+            }
+
+        h1 { 
+            font-weight: 200;
+            color:fff;
+            text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+            font-size: 2.5em;
+            text-align: center;
+        }
+
+        .main {
+            position: relative; 
+        }
+
+        #content { 
+            width: 640px; 
+            margin: 0 auto; 
+            margin-top: 30px; 
+            border: 2px dotted black;
+            text-align: center; 
+            font-family: 'Helvetica Neue', arial; 
+            font-weight: 100;
+            color:#fff;
+            text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+        }
+        
+        hr {
+            border: 1px dashed #000;
+            width: 65%;
+        }
+
+        div.eight-ball {
+            background-color: black;
+            border: 1px solid black;
+            border-radius: 50%;
+            width: 800px;
+            height: 800px;
+            margin: 0 auto;
+            margin-bottom: 0px;
+            margin-top: 50px;
+        }
+
+        div.answer {
+            background-color: #333;
+            border: 1px solid #333;
+            border-radius: 50%;
+            width: 50%;
+            height: 50%;
+            margin: 25% auto;
+        }
+
+        p#eight {
+            font-size: 5em;
+            margin: 100% auto;
+            color: white;
+            width: 537px;
+            text-align: center;
+        }
+
+        p#answer {
+            padding: 23px;
+            color: lightblue;
+            letter-spacing: 2px;
+            font-size:18px;
+            height: 175px;
+            width: 534px;
+            margin-top: 0px;
+        }
+
+        #question {
+            margin: 20px;
+            padding: 10px;
+            width: 560px;
+            font-size:22px;
+        }
+
+        #info {
+            padding-top: 15px;
+            padding-bottom: 0px;
+            font-size: 22px;
+        }
+
+        .form {
+            margin: 0 auto;
+            width: 600px;
+        }
+
+        .form label{
+            display: inline-block;
+            text-align: right;
+        }
+
+        .form input{
+            display: inline-block;
+            text-align: right;
+            margin-top: 4px;
+            position: relative;
+            top: -17px;
+            left: 188px;
+            height: 20px;
+            width: 130px;
+        }}
+
+        .no-border {
+            height: 239px;
+            width: 576px;
+            text-align: justify;
+            position: relative;
+            top: -2px;
+            left: 10px;
+        }
+
+        .auto-style1 {
+            font-size: large;
+        }
+    </style>
+</head>
+
+<body>
+<div id="main">
+    <h1>Communcation Challenged 8-ball for First Dates</h1>
+<div id="content">
+    <p id="info">Please Describe your Date</p>
+    <hr/>
+    <div class="form">
+        
+        <form action='/Date_Input' method="POST">
+        
+        <div class="input-group no-border">
+            <label for="sex" class="col-4 col-form-label">Date's sex?</label> 
+            <div class="col-8">
+                <select id="sex" name="sex" class="custom-select" required="required" aria-describedby="sexHelpBlock">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select> 
+                    <span id="sexHelpBlock" class="form-text">Let's start off easy with an easy question.</span>
+                    <br/>
+            </div>
+        </div>
+        
+        <div class="input-group no-border">
+            <label for="hair" class="col-4 col-form-label">Date's hair color?</label> 
+            <div class="col-8">
+                <select id="hair" name="hair" class="custom-select" aria-describedby="hairHelpBlock">
+                    <option value="brown">Brown</option>
+                    <option value="black">Black</option>
+                    <option value="white">White</option>
+                    <option value="sandy">Sandy</option>
+                    <option value="gray">Gray/Partly Gray</option>
+                    <option value="red">Red/Auburn</option>
+                    <option value="blond">Blond/Strawberry</option>
+                    <option value="blue">Blue</option>
+                    <option value="Orange">Orange</option>
+                    <option value="pink">Pink</option>
+                    <option value="purple">Purple</option>
+                    <option value="bald">Bald</option>
+                    <option value="other">Other</option>
+                </select> 
+                    <span id="hairHelpBlock" class="form-text">Pick the closest option if not available.</span>
+                    <br/>
+            </div>
+        </div>
+         
+        <div class="input-group no-border">
+            <label for="height" class="col-4 col-form-label">Date's height?</label> 
+            <div class="col-8">
+                <select id="height" name="height" class="custom-select" aria-describedby="heightHelpBlock">
+                    <option value="short">Short</option>
+                    <option value="average">Average</option>
+                    <option value="tall">Tall</option>
+                </select> 
+                    <span id="heightHelpBlock" class="form-text">Just a general idea will help with the results.</span>
+                    <br/>
+            </div>
+        </div>
+        <hr/>
+        <div class="input-group">
+            <label class="col-4">Are you looking to score?</label> 
+            <div class="col-8">
+                <div class="form-check form-check-inline"">
+                    <input type="radio" name="score" id="score_0" class="custom-control-input" value="yes" required="required" aria-describedby="scoreHelpBlock"> 
+                    <label for="score_0" class="custom-control-label">Yes</label>
+                </div>
+                <div class="form-check form-check-inline"">
+                    <input type="radio" name="score" id="score_1" class="custom-control-input" value="no" required="required" aria-describedby="scoreHelpBlock"> 
+                    <label for="score_1" class="custom-control-label">No</label>
+                </div> 
+                    <span id="scoreHelpBlock" class="form-text">Be honest. The bot won't tell on you!</span>
+            </div>
+        </div>
+        <hr/>
+        <div class="input-group no-border">
+            <label for="birth" class="col-4 col-form-label">What is your date's zodiac sign?</label> 
+            <div class="col-8">
+                <select id="birth" name="birth" class="custom-select">
+                    <option value="aquarius">Aquarius (January 20 - February 18)</option>
+                    <option value="pisces">Pisces (February 19 - March 20)</option>
+                    <option value="aries">Aries (March 21 - April 19)</option>
+                    <option value="taurus">Taurus (April 20 - May 20)</option>
+                    <option value="gemini">Gemini (May 21 - June 20)</option>
+                    <option value="cancer">Cancer (June 21 - July 22)</option>
+                    <option value="leo">Leo (July 23 - August 22)</option>
+                    <option value="virgo">Virgo (August 23 - September 22)</option>
+                    <option value="libra">Libra (September 23 - October 22)</option>
+                    <option value="scorpio">Scorpio (October 23 - November 21)</option>
+                    <option value="sagittarius">Sagittarius (November 22 - December 21)</option>
+                    <option value="capricorn">Capricorn (December 22 - January 19)</option>
+                    <option value="nozodiac">Unknown/Other</option>
+                </select>
+            </div>
+        </div> 
+        <hr/>
+        <div class="input-group no-border">
+            <div class="col-12">
+                <button name="submit" type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+        
+        </form>
+             
+        <form class="form-horizontal">
+        
+        <div id="eight-ball" class="eight-ball">
+            <div class="answer">
+                <p id="answer"></p>
+                <!-- iframe width = "-500" height = "400" frameborder = "0" scrolling = "yes" src = "response" ></iframe --> 
+                {{response}}
+                <p id="eight">8</p>
+            </div>
+        </div>
   
-  <style type="text/css">
-    h1 { font-weight: 100; font-size: 2.5em;}
-    
-    #content { 
-     width: 600px; 
-     margin: 0 auto; 
-     margin-top: 100px; 
-     border: 1px dotted black;
-     text-align: center; 
-     font-family: 'Helvetica Neue', arial; 
-     font-weight: 100;
-   }
-    
-    div.eight-ball {
-      background-color: black;
-      border: 1px solid black;
-      border-radius: 50%;
-      width: 600px;
-      height: 600px;
-      margin: 0 auto;
-      margin-bottom: 0px;
-      margin-top: 30px;
-    }
-    
-    div.answer {
-      background-color: #333;
-      border: 1px solid #333;
-      border-radius: 50%;
-      width: 50%;
-      height: 50%;
-      margin: 25% auto;
-    }
-    
-    p#eight {
-      font-size: 5em;
-      margin: 100% auto;
-      color: white;
-          width: 537px;
-          text-align: center;
-      }
-    
-    p#answer {
-      padding: 23px;
-      color: lightblue;
-      letter-spacing: 2px;
-      font-size:18px;
-          height: 175px;
-          width: 534px;
-          margin-top: 0px;
-      }
-    
-    #question {
-      margin: 20px;
-      padding: 10px;
-      width: 400px;
-      font-size:22px;
-    }
-    
-    #info {
-      font-size: 22px;
-    }
-
-    .form {
-		margin: 0 auto;
-		width: 418px;
-	}
-
-	.form label{
-		display: inline-block;
-		text-align: right;
-	}
-
-	.form input{
-		display: inline-block;
-		text-align: right;
-		float: right;
-          margin-top: 4px;
-          position: relative;
-          top: -17px;
-          left: 188px;
-          height: 20px;
-          width: 130px;
-      }
-     	}
-    
-      .no-border {
-          height: 239px;
-          width: 576px;
-          text-align: justify;
-          position: relative;
-          top: -2px;
-          left: 10px;
-      }
-    
-      .auto-style1 {
-          font-size: large;
-      }
-    
-  </style>
-  
- </head>
- <body>
-  <div id="content">
-    <h1>Communcation Challenged 8ball for First Dates</h1>
-    <p id="info">Describe your Date Please</p>
-      <div class="form">
-              <form action='/Date_Input' method="POST">
-                <div class="input-group no-border">
-                <label for="sex">What is your date's Sex</label><br>
-                  <input type="text" id="sex" name="sex">
-                  <label for="hair">What is your date's Hair Color</label><br>
-                  <input type="text" id="hair" name="hair" >
-                  <label for="height">What is your Date's height</label><br>
-                  <input type="text" id="height" name="height">
-                  <label for="score">Are you trying to Score with your date</label><br>
-                  <input type="text" id="score" name="score">
-                  <label for="birth">What is your Date's Zodiac sign</label><br>
-                  <input type="text" id="birth" name="birth">
-                  <input class="btn btn-default" type="Submit" value="Submit">
-                  </div>
-                </form>
-              </div>
-            
-          
-      <form class="form-horizontal">
-             <div id="eight-ball" class="eight-ball">
-                  <div class="answer">
-                      <p id="eight">8    <p id="eight">8    <p id="eight">8</p>
-        <p id="answer"></p>
-      </div>
-    </div>
-  </div>
- </body>
+</div>
+</div>
+</body>
 </html>
