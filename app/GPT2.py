@@ -26,6 +26,6 @@ def Date_Input(sex,hair,height,score,birth):
 
     input_statement = ("What do I say to my date who is a "+ sex + " who has " + hair + " hair, and is " + height + ". I " + score_var + " them. " + " Their birth sign is " + birth)
     #response = ics.interact_model( model_name='1558M',nsamples=1,top_k=40,temperature=.80, input_statement = input_statement)
-    response = rene.rene_test(input_statement)
-    return (response)
+    my_resp = rene.rene_test(input_statement)
+    return (my_resp)
   
